@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code-Assessor - Learn Coding, Assess Skills, Grow Your Career</title>
+    <meta name="description" content="Revolutionary coding education platform where students learn by doing and teachers track real progress. Master programming with hands-on challenges and AI-powered assistance." />
+    <meta name="author" content="Code-Assessor" />
+
+    <meta property="og:title" content="Code-Assessor - Learn Coding, Assess Skills, Grow Your Career" />
+    <meta property="og:description" content="Revolutionary coding education platform where students learn by doing and teachers track real progress. Master programming with hands-on challenges and AI-powered assistance." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@code_assessor" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+
+#root {
+  min-height: 100vh;
+}
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em hsl(var(--primary) / 0.5));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em hsl(var(--secondary) / 0.5));
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: ["class"],
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(214.3 31.8% 91.4%)",
+              input: "hsl(214.3 31.8% 91.4%)",
+              ring: "hsl(222.2 84% 4.9%)",
+              background: "hsl(0 0% 100%)",
+              foreground: "hsl(222.2 84% 4.9%)",
+              primary: {
+                DEFAULT: "hsl(221.2 83.2% 53.3%)",
+                foreground: "hsl(210 40% 98%)",
+                glow: "hsl(221.2 83.2% 70%)",
+              },
+              secondary: {
+                DEFAULT: "hsl(210 40% 96%)",
+                foreground: "hsl(222.2 84% 4.9%)",
+              },
+              destructive: {
+                DEFAULT: "hsl(0 84.2% 60.2%)",
+                foreground: "hsl(210 40% 98%)",
+              },
+              muted: {
+                DEFAULT: "hsl(210 40% 96%)",
+                foreground: "hsl(215.4 16.3% 46.9%)",
+              },
+              accent: {
+                DEFAULT: "hsl(210 40% 94%)",
+                foreground: "hsl(222.2 84% 4.9%)",
+              },
+              success: {
+                DEFAULT: "hsl(142.1 76.2% 36.3%)",
+                foreground: "hsl(355.7 100% 97.3%)",
+              },
+              warning: {
+                DEFAULT: "hsl(38.2 92.9% 50.8%)",
+                foreground: "hsl(48.2 100% 93.7%)",
+              },
+              popover: {
+                DEFAULT: "hsl(0 0% 100%)",
+                foreground: "hsl(222.2 84% 4.9%)",
+              },
+              card: {
+                DEFAULT: "hsl(0 0% 100%)",
+                foreground: "hsl(222.2 84% 4.9%)",
+              },
+            },
+            borderRadius: {
+              lg: "0.5rem",
+              md: "calc(0.5rem - 2px)",
+              sm: "calc(0.5rem - 4px)",
+            },
+            keyframes: {
+              "float": {
+                "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+                "50%": { transform: "translateY(-20px) rotate(5deg)" }
+              },
+              "fade-up": {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" }
+              },
+              "bounce-in": {
+                "0%": { opacity: "0", transform: "scale(0.3)" },
+                "50%": { transform: "scale(1.05)" },
+                "70%": { transform: "scale(0.9)" },
+                "100%": { opacity: "1", transform: "scale(1)" }
+              },
+              "pulse-glow": {
+                "0%, 100%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)" },
+                "50%": { boxShadow: "0 0 40px rgba(59, 130, 246, 0.8)" }
+              }
+            },
+            animation: {
+              "float": "float 6s ease-in-out infinite",
+              "fade-up": "fade-up 0.6s ease-out",
+              "bounce-in": "bounce-in 0.8s ease-out",
+              "pulse-glow": "pulse-glow 2s ease-in-out infinite"
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .btn-hero {
+        background: linear-gradient(135deg, hsl(221.2 83.2% 53.3%), hsl(221.2 83.2% 70%));
+        color: white;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-hero:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+      }
+      
+      .btn-outline-hero {
+        border: 2px solid hsl(221.2 83.2% 53.3%);
+        color: hsl(221.2 83.2% 53.3%);
+        background: transparent;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-outline-hero:hover {
+        background: hsl(221.2 83.2% 53.3%);
+        color: white;
+        transform: scale(1.05);
+      }
+      
+      .card-feature {
+        background: white;
+        border: 1px solid hsl(214.3 31.8% 91.4%);
+        border-radius: 1rem;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .card-feature:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      
+      .pulse-glow {
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
+      
+      .dropdown-menu {
+        background: white;
+        border: 1px solid hsl(214.3 31.8% 91.4%);
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 12rem;
+        z-index: 50;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.2s ease;
+      }
+      
+      .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      
+      .dropdown-item {
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      
+      .dropdown-item:hover {
+        background: hsl(210 40% 96%);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-background">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Code-Assessor
+            </h1>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a href="#home" class="text-foreground hover:text-primary transition-colors duration-300 relative group">
+                Home
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="#features" class="text-foreground hover:text-primary transition-colors duration-300 relative group">
+                Features
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+              <a href="#about" class="text-foreground hover:text-primary transition-colors duration-300 relative group">
+                About
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Login/Signup Dropdown -->
+          <div class="hidden md:block relative">
+            <button id="dropdown-trigger" class="flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              Login/Signup
+              <i data-lucide="chevron-down" class="h-4 w-4"></i>
+            </button>
+            <div id="dropdown-menu" class="dropdown-menu">
+              <div class="dropdown-item"><a href="/Frontend/views/html/Teacherlogin.html">Teacher Login</a></div>
+              <div class="dropdown-item"><a href="/Frontend/views/html/Studentloin.html">Student Login</a></div>
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button id="mobile-menu-btn" class="text-foreground p-2">
+              <i data-lucide="menu" class="h-6 w-6" id="menu-icon"></i>
+              <i data-lucide="x" class="h-6 w-6 hidden" id="close-icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden bg-background/95 backdrop-blur-md border-b border-border hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="#home" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 mobile-nav-link">Home</a>
+          <a href="#features" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 mobile-nav-link">Features</a>
+          <a href="#about" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 mobile-nav-link">About</a>
+          <div class="pt-4 pb-3 border-t border-border">
+            <div class="space-y-1">
+              <button class="block w-full text-left px-3 py-2 text-foreground hover:text-primary transition-colors duration-300">Teacher Login</button>
+              <button class="block w-full text-left px-3 py-2 text-foreground hover:text-primary transition-colors duration-300">Student Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-primary/5">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img src="/Frontend/views/images/download" alt="Coding Education Background" class="w-full h-full object-cover opacity-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-primary/20"></div>
+      </div>
+
+      <!-- Floating Icons -->
+      <div class="absolute top-20 left-20 hidden lg:block">
+        <i data-lucide="code" class="h-8 w-8 text-primary/30 float-animation"></i>
+      </div>
+      <div class="absolute top-32 right-32 hidden lg:block" style="animation-delay: 1s;">
+        <i data-lucide="book-open" class="h-8 w-8 text-primary/30 float-animation"></i>
+      </div>
+      <div class="absolute top-60 left-32 hidden lg:block" style="animation-delay: 2s;">
+        <i data-lucide="lightbulb" class="h-8 w-8 text-primary/30 float-animation"></i>
+      </div>
+      <div class="absolute top-40 right-20 hidden lg:block" style="animation-delay: 0.5s;">
+        <i data-lucide="cpu" class="h-8 w-8 text-primary/30 float-animation"></i>
+      </div>
+      <div class="absolute top-80 right-40 hidden lg:block" style="animation-delay: 1.5s;">
+        <i data-lucide="database" class="h-8 w-8 text-primary/30 float-animation"></i>
+      </div>
+      <div class="absolute top-96 left-40 hidden lg:block" style="animation-delay: 2.5s;">
+        <i data-lucide="globe" class="h-8 w-8 text-primary/30 float-animation"></i>
+      </div>
+
+      <!-- Main Content -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="space-y-8">
+          <!-- Main Heading -->
+          <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight opacity-0">
+            <span class="block">Learn Coding,</span>
+            <span class="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent" style="color: rgb(99, 162, 229);;">
+              Assess Skills,
+            </span>
+            <span class="block">Grow Your Career</span>
+          </h1>
+
+          <!-- Subheading -->
+          <p id="hero-subheading" class="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed opacity-0">
+            A practical coding platform where students learn by doing, and teachers track real progress.
+            Master programming concepts through hands-on challenges and AI-powered assistance.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div id="hero-buttons" class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0">
+            <button id="start-exploring-btn" class="btn-hero pulse-glow text-lg px-8 py-4 rounded-xl shadow-xl">
+              Start Exploring
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div id="hero-stats" class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16 pt-16 border-t border-border/30 opacity-0" style="position: relative; left: 150px;">
+            
+            <div class="text-center">
+              <div class="text-3xl font-bold text-secondary" style="color: rgb(99, 162, 229); ">50+</div>
+              <div class="text-muted-foreground">Practice Problems</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-accent" style="color: rgb(99, 162, 229);">24/7</div>
+              <div class="text-muted-foreground">AI Assistance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-6 border-r-2 border-b-2 border-primary transform rotate-45"></div>
+      </div>
+    </section>
+    
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
+    <!-- Footer -->
+    <footer class="bg-foreground text-background py-16" style="position: relative ; bottom:80px;">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand Section -->
+          <div class="md:col-span-2">
+            <div class="flex items-center mb-4">
+              <i data-lucide="code" class="h-8 w-8 text-primary mr-3"></i>
+              <h3 class="text-2xl font-bold">Code-Assessor</h3>
+            </div>
+            <p class="text-background/80 leading-relaxed mb-6 max-w-md">
+              Revolutionizing coding education through practical learning, AI-powered assistance, 
+              and comprehensive progress tracking for both educators and students.
+            </p>
+            
+            <!-- Social Icons -->
+            <div class="flex space-x-4">
+              <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center text-background/70 hover:text-primary hover:bg-primary/20 transition-all duration-300 hover:scale-110" aria-label="Twitter">
+                <i data-lucide="twitter" class="h-5 w-5"></i>
+              </a>
+              <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center text-background/70 hover:text-primary hover:bg-primary/20 transition-all duration-300 hover:scale-110" aria-label="LinkedIn">
+                <i data-lucide="linkedin" class="h-5 w-5"></i>
+              </a>
+              <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center text-background/70 hover:text-primary hover:bg-primary/20 transition-all duration-300 hover:scale-110" aria-label="GitHub">
+                <i data-lucide="github" class="h-5 w-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li><a href="#home" class="text-background/70 hover:text-primary transition-colors duration-300 relative group">Home<span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span></a></li>
+              <li><a href="#features" class="text-background/70 hover:text-primary transition-colors duration-300 relative group">Features<span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span></a></li>
+              <li><a href="#about" class="text-background/70 hover:text-primary transition-colors duration-300 relative group">About<span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span></a></li>
+              <li><a href="#" class="text-background/70 hover:text-primary transition-colors duration-300 relative group">Contact<span class="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span></a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact</h4>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <i data-lucide="mail" class="h-5 w-5 text-primary mr-3 mt-0.5"></i>
+                <div>
+                  <p class="text-background/70">support@code-assessor.com</p>
+                  <p class="text-background/70">hello@code-assessor.com</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i data-lucide="map-pin" class="h-5 w-5 text-primary mr-3 mt-0.5"></i>
+                <div>
+                  <p class="text-background/70">123 Education Street</p>
+                  <p class="text-background/70">Tech City, TC 12345</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="mt-12 pt-8 border-t border-background/20">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-background/60 text-sm">
+              ©  Code-Assessor. All rights reserved.
+            </p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
+              <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
+              <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors duration-300">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+      let isMenuOpen = false;
+
+      mobileMenuBtn.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+
+      // Mobile nav links close menu
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          isMenuOpen = false;
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        });
+      });
+
+      // Dropdown Menu
+      const dropdownTrigger = document.getElementById('dropdown-trigger');
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      let isDropdownOpen = false;
+
+      dropdownTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isDropdownOpen = !isDropdownOpen;
+        dropdownMenu.classList.toggle('show', isDropdownOpen);
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', () => {
+        if (isDropdownOpen) {
+          isDropdownOpen = false;
+          dropdownMenu.classList.remove('show');
+        }
+      });
+
+      // Hero Section Animations
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('hero-heading').classList.add('animate-fade-up');
+          document.getElementById('hero-heading').style.opacity = '1';
+        }, 100);
+
+        setTimeout(() => {
+          document.getElementById('hero-subheading').classList.add('animate-fade-up');
+          document.getElementById('hero-subheading').style.opacity = '1';
+        }, 500);
+
+        setTimeout(() => {
+          document.getElementById('hero-buttons').classList.add('animate-fade-up');
+          document.getElementById('hero-buttons').style.opacity = '1';
+        }, 800);
+
+        setTimeout(() => {
+          document.getElementById('hero-stats').classList.add('animate-fade-up');
+          document.getElementById('hero-stats').style.opacity = '1';
+        }, 1100);
+      });
+
+      // Smooth Scrolling
+      document.getElementById('start-exploring-btn').addEventListener('click', () => {
+        document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('cta-start-btn').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Smooth scroll for nav links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Intersection Observer for animations
+      const observeElements = (selector, animationClass, delay = 0) => {
+        const elements = document.querySelectorAll(selector);
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                entry.target.classList.add(animationClass);
+                entry.target.style.opacity = '1';
+              }, delay + (index * 200));
+            }
+          });
+        }, { threshold: 0.3 });
+
+        elements.forEach(el => observer.observe(el));
+      };
+
+      // Observe feature cards
+      observeElements('.feature-card', 'animate-bounce-in');
+      
+      // Observe testimonial cards
+      observeElements('.testimonial-card', 'animate-fade-up');
+    </script>
+  </body>

@@ -18,16 +18,13 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
+
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
-        /* Minimal styles for the app - most styling is handled by the design system */
 
 #root {
   min-height: 100vh;
 }
-
-/* Remove default React template styles */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -266,8 +263,6 @@
             <div id="dropdown-menu" class="dropdown-menu">
               <div class="dropdown-item">Teacher Login</div>
               <div class="dropdown-item">Student Login</div>
-              <div class="dropdown-item">Teacher Signup</div>
-              <div class="dropdown-item">Student Signup</div>
             </div>
           </div>
 
@@ -301,7 +296,7 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-primary/5">
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
-        <img src="src/assets/hero-coding.jpg" alt="Coding Education Background" class="w-full h-full object-cover opacity-10">
+        <img src="/Frontend/views/images/download" alt="Coding Education Background" class="w-full h-full object-cover opacity-10">
         <div class="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-primary/20"></div>
       </div>
 
@@ -331,7 +326,7 @@
           <!-- Main Heading -->
           <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight opacity-0">
             <span class="block">Learn Coding,</span>
-            <span class="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <span class="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent" style="color: rgb(99, 162, 229);;">
               Assess Skills,
             </span>
             <span class="block">Grow Your Career</span>
@@ -354,24 +349,22 @@
           <div id="hero-stats" class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16 pt-16 border-t border-border/30 opacity-0" style="position: relative; left: 150px;">
             
             <div class="text-center">
-              <div class="text-3xl font-bold text-secondary" style="color: rgb(91, 179, 208); ">50+</div>
+              <div class="text-3xl font-bold text-secondary" style="color: rgb(99, 162, 229); ">50+</div>
               <div class="text-muted-foreground">Practice Problems</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl font-bold text-accent" style="color: rgb(91, 179, 208);">24/7</div>
+              <div class="text-3xl font-bold text-accent" style="color: rgb(99, 162, 229);">24/7</div>
               <div class="text-muted-foreground">AI Assistance</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Scroll Indicator -->
       <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div class="w-6 h-6 border-r-2 border-b-2 border-primary transform rotate-45"></div>
       </div>
     </section>
     
-    <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 relative overflow-hidden">
       <!-- Background Pattern -->
       <div class="absolute inset-0 opacity-10">
@@ -382,7 +375,7 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
        
     <!-- Footer -->
-    <footer class="bg-foreground text-background py-16" style="width: 2000px; position: relative; right: 600px;">
+    <footer class="bg-foreground text-background py-16" style="width: 2000px; position: relative; right: 600px ; bottom:80px;">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <!-- Brand Section -->
@@ -447,7 +440,7 @@
         <div class="mt-12 pt-8 border-t border-background/20">
           <div class="flex flex-col md:flex-row justify-between items-center">
             <p class="text-background/60 text-sm">
-              © 2024 Code-Assessor. All rights reserved.
+              ©  Code-Assessor. All rights reserved.
             </p>
             <div class="flex space-x-6 mt-4 md:mt-0">
               <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>

@@ -14,7 +14,7 @@
     <div class="text-2xl font-bold text-blue-600">Code Assessor</div>
 
     <!-- Center -->
-    <div class="space-x-6 text-lg font-medium">
+    <div class="hidden md:flex space-x-6 text-lg font-medium">
       <a href="#" class="hover:text-blue-500">Home</a>
       <a href="#" class="hover:text-blue-500">About</a>
     </div>
@@ -26,31 +26,37 @@
       </button>
     </div>
   </nav>
-
+  
   <!-- Heading -->
-  <section class="text-center mt-12">
+  <section class="text-center mt-12 px-4;">
     <h1 class="text-4xl font-bold text-blue-700">Students Need</h1>
     <p class="text-gray-600 mt-2">Empowering students with tools to learn and grow</p>
   </section>
 
-  <!-- Boxes Section -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12 px-6">
+  <!-- Feature Boxes -->
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mt-12 px-6" style="position: relative; left: 150px" >
     
     <!-- Box 1 -->
-    <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-      <h2 class="text-xl font-semibold text-blue-600 mb-3">Assign Practicals</h2>
-      <p class="text-gray-700">
-        Teachers can post coding practicals by subject. They can also monitor who completed what and how well.
-      </p>
-    </div>
+     <a href="/Frontend/views/html/StudyRoom.html"> 
+
+         <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
+             <h2 class="text-xl font-semibold text-blue-600 mb-3">Assign Practicals</h2>
+             <p class="text-gray-700">
+                 Teachers can post coding practicals by subject. They can also monitor who completed what and how well.
+                </p>
+            </div>
+        </a>
 
     <!-- Box 2 -->
-    <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-      <h2 class="text-xl font-semibold text-blue-600 mb-3">AI-Powered Assistance</h2>
-      <p class="text-gray-700">
-        From understanding logic to getting concept explanations, without giving away full answers.
-      </p>
-    </div>
+     <a href="/Frontend/views/html/editor.html">
+
+         <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition" style="height: 200px;">
+             <h2 class="text-xl font-semibold text-blue-600 mb-3">AI-Powered Assistance</h2>
+             <p class="text-gray-700">
+                 From understanding logic to getting concept explanations, without giving away full answers.
+                </p>
+            </div>
+        </a>
 
     <!-- Box 3 -->
     <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
@@ -59,7 +65,19 @@
         Colleges can effortlessly onboard teachers and students, assign them to classes, and manage all from a centralized dashboard.
       </p>
     </div>
+
+  
   </section>
+
+  
+
+  <!-- Footer -->
+   <a href="/Frontend/views/html/editor.html"> 
+
+       <footer class="bg-blue-600 text-white py-6 text-center mt-12" style="position: relative; top: 230px;">
+           <p>Contact Us</p>
+        </footer>
+    </a>
 
   <script>
     function studentProfile() {

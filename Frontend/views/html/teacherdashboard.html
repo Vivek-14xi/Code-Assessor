@@ -17,8 +17,8 @@
     }
 
     function renderGraphs() {
-      const graph1Data = fetchGraphData('graph1');
-      const ctx1 = document.getElementById('graph1').getContext('2d');
+      const graph1Data = fetchGraphData('graph');
+      const ctx1 = document.getElementById('graph').getContext('2d');
       new Chart(ctx1, {
         type: 'line',
         data: {

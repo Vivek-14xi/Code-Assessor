@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Assessor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-6 py-4 shadow-md bg-white">
+    <!-- Left -->
+    <div class="text-2xl font-bold text-blue-600">Code Assessor</div>
+
+    <!-- Center -->
+    <div class="space-x-6 text-lg font-medium">
+      <a href="#" class="hover:text-blue-500">Home</a>
+      <a href="#" class="hover:text-blue-500">About</a>
+    </div>
+
+    <!-- Right -->
+    <div>
+      <button onclick="studentProfile()" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
+        Student Profile
+      </button>
+    </div>
+  </nav>
+
+  <!-- Heading -->
+  <section class="text-center mt-12">
+    <h1 class="text-4xl font-bold text-blue-700">Students Need</h1>
+    <p class="text-gray-600 mt-2">Empowering students with tools to learn and grow</p>
+  </section>
+
+  <!-- Boxes Section -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12 px-6">
+    
+    <!-- Box 1 -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold text-blue-600 mb-3">Assign Practicals</h2>
+      <p class="text-gray-700">
+        Teachers can post coding practicals by subject. They can also monitor who completed what and how well.
+      </p>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold text-blue-600 mb-3">AI-Powered Assistance</h2>
+      <p class="text-gray-700">
+        From understanding logic to getting concept explanations, without giving away full answers.
+      </p>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold text-blue-600 mb-3">Smart Interview Practices</h2>
+      <p class="text-gray-700">
+        Colleges can effortlessly onboard teachers and students, assign them to classes, and manage all from a centralized dashboard.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    function studentProfile() {
+      alert("Student Profile Function Called! (You can replace this with real logic later)");
+    }
+  </script>
+</body>
+</html>

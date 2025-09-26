@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Python Editor + AI Chatbot</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python Editor + AI Chatbot</title>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- CodeMirror CSS & JS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <!-- CodeMirror CSS & JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 
-  <style>
-    *{
-      margin: 0;
-      padding: 0;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-    .CodeMirror {
-      width: 1100px;
-      height: 400px; /* Full height editor */
-      border-radius: 0.5rem;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body class="h-full bg-gray-100">
-
-  <div class="flex h-full min-h-screen">
-    <!-- Left: Python Editor -->
-    <div class="flex-1 p-4 flex flex-col">
-      <textarea id="code">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      .CodeMirror {
+        width: 1100px;
+        height: 400px; /* Full height editor */
+        border-radius: 0.5rem;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body class="h-full bg-gray-100">
+    <div class="flex h-full min-h-screen">
+      <!-- Left: Python Editor -->
+      <div class="flex-1 p-4 flex flex-col">
+        <textarea id="code">
 
 def factorial(n):
     if n==0 or n==1:
@@ -64,82 +70,229 @@ print("=== Python Demo Program ===")
 print("Factorial of 6:", factorial(6))
 print("First 10 Fibonacci numbers:", fibonacci(10))
 print("Prime numbers up to 50:", prime_numbers(50))
-      </textarea>
-      
-      <div class="flex mt-4 space-x-4" >
-        <button onclick="runCode()" class="px-2 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="margin: 0px;">Run Code</button>
-        <button onclick="clearOutput()" class="px-6 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Clear Output</button>
+      </textarea
+        >
+
+        <div class="flex mt-4 space-x-4">
+          <button
+            onclick="runCode()"
+            class="px-2 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            style="margin: 0px"
+          >
+            Run Code
+          </button>
+          <button
+            onclick="clearOutput()"
+            class="px-6 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+          >
+            Clear Output
+          </button>
+        </div>
+
+        <h3 class="mt-4 font-semibold text-lg" style="margin: 0px">Output:</h3>
+        <pre
+          id="output"
+          class="bg-gray-900 text-green-400 p-4 rounded flex-1 overflow-auto"
+        ></pre>
       </div>
 
-      <h3 class="mt-4 font-semibold text-lg" style="margin: 0px;">Output:</h3>
-      <pre id="output" class="bg-gray-900 text-green-400 p-4 rounded flex-1 overflow-auto"></pre>
-    </div>
+      <!-- Right: AI Chatbot Panel -->
+      <div
+        class="w-[100%] bg-white p-4 border-l border-gray-300 flex flex-col"
+        style="width: 600px"
+      >
+        <div
+          class="bg-white rounded-lg shadow-md w-full h-full flex flex-col mx-4"
+        >
+          <div
+            class="p-4 border-b border-gray-200 flex items-center justify-between"
+          >
+            <button class="text-gray-500 hover:text-gray-700">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <h2
+              class="text-lg font-semibold text-gray-800 flex-1 text-center pr-10"
+            >
+              ChatBot
+            </h2>
+          </div>
 
-    <!-- Right: AI Chatbot Panel -->
-    <div class="w-1/5 bg-white p-4 border-l border-gray-300 flex flex-col" style="width: 600px;">
-      <h2 class="text-xl font-bold mb-2 text-center">Personalize Assissant</h2>
-      <div id="chatOutput" class="flex-1 bg-gray-100 p-2 rounded overflow-auto mb-2">
-        <p class="text-gray-500 text-sm">Chat output will appear here...</p>
+          <div
+            class="chat-container flex-1 p-6 overflow-y-auto space-y-4 no-scrollbar"
+          >
+            <div class="flex justify-start">
+              <div
+                class="bg-white border border-gray-300 rounded-lg p-4 w-[96%]"
+              >
+                <p class="text-gray-700">
+                  AI Response sjdfklfsdf klsajdflksda klsajdflksdajf
+                  aslkdjfl'shadow-md ksjdfe ksjdfoei sjdfklfsdf klsajdflksda
+                  klsajdflksdajf aslkdjfl'shadow-md ksjdfe ksjdfoei
+                </p>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <div
+                class="bg-white border border-gray-300 rounded-lg p-2 w-[50%]"
+              >
+                <p class="text-gray-700 text-right">Your Query</p>
+              </div>
+            </div>
+
+            <div class="flex justify-start">
+              <div
+                class="bg-white border border-gray-300 rounded-lg p-4 w-full max-w-sm"
+              >
+                <p class="text-gray-700">AI Response</p>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <div
+                class="bg-white border border-gray-300 rounded-lg p-2 w-full max-w-xs"
+              >
+                <p class="text-gray-700 text-right">Your Query</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-4 border-t border-gray-200 bg-white flex items-center rounded-b-lg"
+          >
+            <input
+              type="text"
+              placeholder="Ask me ...."
+              class="user-query flex-1 border border-gray-300 rounded-full py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2"
+            />
+
+            <div class="flex space-x-2">
+              <button class="p-2 text-gray-500 hover:text-blue-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 13h6m-3-3v6m-9-3a9 9 0 1118 0 9 9 0 01-18 0z"
+                  />
+                </svg>
+              </button>
+              <button class="p-2 text-gray-500 hover:text-blue-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-4.586-4.586a2 2 0 00-2.828 0L6 14m-2 2v2a2 2 0 002 2h12a2 2 0 002-2v-2m-2-2h-2m-2-2h-2m-2-2h-2"
+                  />
+                </svg>
+              </button>
+              <button class="p-2 text-gray-500 hover:text-blue-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 013 3v2a3 3 0 01-3 3v0z"
+                  />
+                </svg>
+              </button>
+              <button
+                class="p-2 text-gray-500 hover:text-blue-500"
+                onclick="send()"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <input id="chatInput" type="text" placeholder="Type your query..." class="p-2 border rounded mb-2">
-      <button onclick="sendChat()" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Send</button>
     </div>
-  </div>
 
-  <script>
-    // Initialize CodeMirror
-    const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-      mode: "python",
-      theme: "dracula",
-      lineNumbers: true,
-      matchBrackets: true,
-      autoCloseBrackets: true,
-      indentUnit: 4,
-      tabSize: 4
-    });
-
-    async function runCode() {
-      const code = editor.getValue();
-
-      const response = await fetch("https://emkc.org/api/v2/piston/execute", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          language: "python",
-          version: "3.10.0",
-          files: [{ name: "main.py", content: code }]
-        })
+    <script>
+      // Initialize CodeMirror
+      const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "python",
+        theme: "dracula",
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        indentUnit: 4,
+        tabSize: 4,
       });
 
-      const data = await response.json();
-      document.getElementById("output").innerText =
-        (data.run.output || "") + (data.run.stderr || "");
-    }
+      async function runCode() {
+        const code = editor.getValue();
 
-    function clearOutput() {
-      document.getElementById("output").innerText = "";
-    }
+        const response = await fetch("https://emkc.org/api/v2/piston/execute", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            language: "python",
+            version: "3.10.0",
+            files: [{ name: "main.py", content: code }],
+          }),
+        });
 
-    function sendChat() {
-      const input = document.getElementById("chatInput").value;
-      if(input.trim() === "") return;
+        const data = await response.json();
+        document.getElementById("output").innerText =
+          (data.run.output || "") + (data.run.stderr || "");
+      }
 
-      const chatDiv = document.getElementById("chatOutput");
-      const p = document.createElement("p");
-      p.className = "text-gray-800 mb-1";
-      p.textContent = "You: " + input;
-      chatDiv.appendChild(p);
+      function clearOutput() {
+        document.getElementById("output").innerText = "";
+      }
 
-      // Example AI response (placeholder)
-      const aiP = document.createElement("p");
-      aiP.className = "text-blue-600 mb-2";
-      aiP.textContent = "AI: This is a placeholder response.";
-      chatDiv.appendChild(aiP);
+      function sendChat() {
+        const input = document.getElementById("chatInput").value;
+        if (input.trim() === "") return;
 
-      chatDiv.scrollTop = chatDiv.scrollHeight; // scroll to bottom
-      document.getElementById("chatInput").value = "";
-    }
-  </script>
+        const chatDiv = document.getElementById("chatOutput");
+        const p = document.createElement("p");
+        p.className = "text-gray-800 mb-1";
+        p.textContent = "You: " + input;
+        chatDiv.appendChild(p);
 
-</body>
+        // Example AI response (placeholder)
+        const aiP = document.createElement("p");
+        aiP.className = "text-blue-600 mb-2";
+        aiP.textContent = "AI: This is a placeholder response.";
+        chatDiv.appendChild(aiP);
+
+        chatDiv.scrollTop = chatDiv.scrollHeight; // scroll to bottom
+        document.getElementById("chatInput").value = "";
+      }
+    </script>
+  </body>
 </html>

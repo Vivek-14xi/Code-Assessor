@@ -15,7 +15,7 @@ const PORT = 6500;
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // Use landing page router
-app.use('/home', landingRoute);
+app.use('/', landingRoute);
 app.use('/editor', editor);
 
 

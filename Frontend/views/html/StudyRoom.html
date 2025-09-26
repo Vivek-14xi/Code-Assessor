@@ -25,7 +25,7 @@
         .slide-down.open { max-height: 500px; transition: max-height 0.5s ease-in; }
         .progress-bar { transition: width 0.5s ease-in-out; }
         .question-button { transition: all 0.2s ease-in-out; }
-        .question-button:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1 rgba(0,0,0,0.1), 0 2px 4px -1 rgba(0,0,0,0.06); }
+        .question-button:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -49,13 +49,13 @@
     <main class="pt-20 pb-10 container mx-auto px-4 fade-in">
         <section class="text-center mb-10">
             <h1 class="text-4xl font-bold text-study-blue">Welcome Student</h1>
-            <p class="text-lg text-gray-600 mt-2">Let's Complete some Practicals</p>
+            <p class="text-lg text-gray-600 mt-2">Let's Complete some Python Practicals</p>
         </section>
 
         <div class="flex flex-col lg:flex-row gap-8">
             <section class="lg:w-7/12">
                 <h2 class="text-2xl font-bold text-study-blue mb-6">Your Subjects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 gap-6">
                     <!-- Python Box -->
                     <div class="bg-gradient-to-r from-study-blue to-study-light-blue rounded-lg shadow-md overflow-hidden">
                         <div class="p-6 text-white text-center cursor-pointer" onclick="toggleSubjectDropdown('python')">
@@ -76,27 +76,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- C++ Box -->
-                    <div class="bg-gradient-to-r from-study-light-blue to-study-lighter-blue rounded-lg shadow-md overflow-hidden">
-                        <div class="p-6 text-white text-center cursor-pointer" onclick="toggleSubjectDropdown('cpp')">
-                            <h3 class="text-2xl font-bold">C++</h3>
-                            <div class="flex justify-between items-center mt-4">
-                                <div class="flex space-x-2">
-                                    <span class="bg-white text-study-blue text-xs font-bold px-2 py-1 rounded-full" id="cpp-total">Total: 8</span>
-                                    <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full" id="cpp-completed">Completed: 6</span>
-                                </div>
-                                <svg class="w-5 h-5 transform transition-transform" id="cpp-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="slide-down bg-blue-50" id="cpp-dropdown" style="overflow: auto;">
-                            <div class="p-4 border-t border-study-blue">
-                                <ul class="space-y-2" id="cpp-questions-list"></ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -114,15 +93,6 @@
                                 <div class="bg-study-blue h-2.5 rounded-full progress-bar" id="python-progress" style="width: 75%"></div>
                             </div>
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-study-blue">C++</span>
-                                <span class="text-sm font-medium text-study-blue" id="cpp-progress-text">6/8</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-study-blue h-2.5 rounded-full progress-bar" id="cpp-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -130,7 +100,6 @@
     </main>
 
     <script>
-        
         const pythonQuestions = [
             "Write a program to implement stack",
             "Write a program to implement linked list",
@@ -141,12 +110,9 @@
             "Write a program for bubble sort",
             "Write a program for quick sort"
         ];
-        
-        const cppQuestions = [...pythonQuestions];
 
         document.addEventListener('DOMContentLoaded', function() {
             addQuestions('python', pythonQuestions);
-            addQuestions('cpp', cppQuestions);
             setupProfileDropdown();
         })
 
@@ -155,7 +121,7 @@
             const dropdown = document.getElementById('profile-dropdown');
             dropdownTrigger.addEventListener('click', () => dropdown.classList.toggle('hidden'));
             document.addEventListener('click', event => {
-                if (!dropdownTrigger.contains(event) && !dropdown.contains(event.target)) {
+                if (!dropdownTrigger.contains(event.target) && !dropdown.contains(event.target)) {
                     dropdown.classList.add('hidden');
                 }
             });
@@ -163,21 +129,12 @@
 
         function logout() { alert('Logout functionality would be implemented here'); }
 
-        // Fixed dropdown function
         function toggleSubjectDropdown(subject) {
-            const subjects = ['python', 'cpp'];
-            subjects.forEach(s => {
-                const dropdown = document.getElementById(`${s}-dropdown`);
-                const arrow = document.getElementById(`${s}-arrow`);
-                if (s === subject) {
-                    const isOpen = dropdown.classList.contains('open');
-                    dropdown.classList.toggle('open', !isOpen);
-                    arrow.classList.toggle('rotate-180', !isOpen);
-                } else {
-                    dropdown.classList.remove('open');
-                    arrow.classList.remove('rotate-90');
-                }
-            });
+            const dropdown = document.getElementById(`${subject}-dropdown`);
+            const arrow = document.getElementById(`${subject}-arrow`);
+            const isOpen = dropdown.classList.contains('open');
+            dropdown.classList.toggle('open', !isOpen);
+            arrow.classList.toggle('rotate-180', !isOpen);
         }
 
         function addQuestions(subject, questionsArray) {

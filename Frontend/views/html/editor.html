@@ -248,12 +248,12 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
     </div>
 
   `;
-        // ✅ Render math using KaTeX
+    
 
         chatContainer.appendChild(aiBubble);
         chatContainer.scrollTop = chatContainer.scrollHeight;
 
-        // 🟢 Backend fetch
+  
         try {
           const res = await fetch("/editor/ask", {
             method: "POST",
@@ -262,8 +262,6 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
           });
 
           const data = await res.json();
-          // console.log(data.answer.);
-          // ✅ Markdown parsing
           const formattedText = data.answer.replace(/\t/g, "    "); // 1 tab = 4 spaces
           aiBubble.innerHTML = `
   <div class="bg-white border border-gray-300 rounded-lg p-4 w-[96%] wrap">
@@ -275,7 +273,7 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
         } catch (err) {
           aiBubble.innerHTML = `
       <div class="bg-red-100 border border-red-400 rounded-lg p-4 w-[96%]">
-        <p class="text-red-700">⚠️ Error: Server not responding</p>
+        <p class="text-red-700"> Error: Server not responding</p>
       </div>
     `;
         }
@@ -283,8 +281,6 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
         inputEl.value = "";
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
-
-      // ✅ Enter key → send
       document
         .querySelector(".user-query")
         .addEventListener("keypress", (e) => {

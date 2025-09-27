@@ -2,6 +2,9 @@ import express from 'express';
 import path from 'path';
 import landingRoute from './routes/landing.js';
 import editor from './routes/editor.js';
+import teacher from "./routes/teacher-dashboard.js"
+import student from "./routes/student-dahboard.js"
+import feature from "./routes/feature.js"
 
 const app = express();
 const PORT = 6500;
@@ -15,6 +18,10 @@ app.use(express.json());
 // Use landing page router
 app.use('/', landingRoute);
 app.use('/editor', editor);
+app.use('/teacher',teacher);
+app.use('/student',student);
+app.use('/feature',feature);
+
 
 // Chatbot route
 

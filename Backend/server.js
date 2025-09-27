@@ -1,15 +1,13 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import landingRoute from './routes/landing.js';
+import editor from './routes/editor.js';
+
 const app = express();
-
-const path = require('path');
-const landingRoute = require('./routes/landing.js');
-const editor = require('./routes/editor.js');
-
-
 const PORT = 6500;
 
-
-
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Static files (if needed)
 // app.use(express.static(path.join(__dirname, 'public')));
@@ -17,6 +15,8 @@ const PORT = 6500;
 // Use landing page router
 app.use('/', landingRoute);
 app.use('/editor', editor);
+
+// Chatbot route
 
 
 app.listen(PORT, () => {

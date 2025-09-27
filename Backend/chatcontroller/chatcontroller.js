@@ -1,6 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey:"AIzaSyAkItuP8tACs0Hx95Nd-jB3Z5EfvSR6BlI" });
+const ai = new GoogleGenAI({
+  apiKey: "AIzaSyAkItuP8tACs0Hx95Nd-jB3Z5EfvSR6BlI",
+});
 
 export const handleChat = async (req, res) => {
   const question = req.body.question || "";
@@ -10,10 +12,11 @@ export const handleChat = async (req, res) => {
       model: "gemini-2.0-flash",
       contents: question,
       config: {
-        systemInstruction: "Provide response in markdown format with proper headings, lists, bold, and line breaks.",
+        systemInstruction:
+          "You are a coding assistant for students. Respond only in markdown with headings, lists, bold, and line breaks. Help students with programming questions by giving hints, explanations, and related CS concepts, but never provide full solutions or unrelated topics. Stay strictly within coding and programming context.",
       },
-    }); 
- 
+    });
+
     res.json({ answer: response.text });
   } catch (error) {
     console.error("Gemini API error:", error);

@@ -7,6 +7,7 @@ import student from "./routes/student-dahboard.js"
 import feature from "./routes/feature.js"
 import mocktest from "./routes/mocktest.js"
 import login from "./routes/login.js"
+import assign from "./routes/assign.js"
 
 
 const app = express();
@@ -19,13 +20,14 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // Use landing page router
-app.use('/', landingRoute);
-app.use('/editor', editor);
-app.use('/teacher',teacher);
-app.use('/student',student);
-app.use('/feature',feature);
-app.use('/mock',mocktest);
-app.use('/login', login);
+app.use('/', landingRoute)
+app.use('/editor', editor)
+app.use('/teacher',teacher)
+app.use('/student',student)
+app.use('/feature',feature)
+app.use('/mock',mocktest)
+app.use('/login', login)
+app.use('/assign',assign)
 
 
 // Chatbot route

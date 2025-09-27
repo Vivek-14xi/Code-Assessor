@@ -43,5 +43,31 @@
       document.getElementById("dropdownMenu").classList.toggle("hidden");
     }
   </script>
+   <script>
+        const correctAnswers = {
+            q1: "Paris",
+            q2: "JavaScript",
+            q3: "Hyper Text Markup Language",
+            q4: "Tailwind CSS",
+            q5: "script"
+        };
+
+        document.getElementById("submitBtn").addEventListener("click", () => {
+            let score = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let q in correctAnswers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === correctAnswers[q]) {
+                    score++;
+                }
+            }
+
+            const wrong = total - score;
+            document.getElementById("result").innerText = `✅ Correct: ${score} | ❌ Wrong: ${wrong}`;
+        });
+    </script>
+
+  
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-10 py-4 shadow-sm bg-white">
+    
+    <!-- Left Logo -->
+    <div class="text-2xl font-extrabold">
+      <span class="text-blue-600">Code-</span>
+      <span class="text-gray-500">Assessor</span>
+    </div>
+
+    <!-- Center Links -->
+    <div class="hidden md:flex space-x-8 text-lg font-medium text-gray-800">
+      <a href="/Frontend/views/html/landingpage.html" class="hover:text-blue-600">Home</a>
+      <a href="/Frontend/views/html/feature.html" class="hover:text-blue-600">Features</a>
+      <a href="/Frontend/views/html/about.html" class="hover:text-blue-600">About</a>
+    </div>
+
+    <!-- Right Dropdown -->
+    <div class="relative">
+      <button onclick="toggleDropdown()" class="px-4 py-2 border rounded-md shadow-sm hover:bg-gray-100 flex items-center gap-1">
+       Profile
+        <span>▼</span>
+      </button>
+      <!-- Dropdown Menu -->
+      <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100">logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>

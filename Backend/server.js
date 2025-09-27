@@ -8,7 +8,7 @@ import feature from "./routes/feature.js"
 import mocktest from "./routes/mocktest.js"
 import login from "./routes/login.js"
 import assign from "./routes/assign.js"
-
+import teacherlogin from "./routes/teacher-login.js"
 
 const app = express();
 const PORT = 6500;
@@ -28,6 +28,7 @@ app.use('/feature',feature)
 app.use('/mock',mocktest)
 app.use('/login', login)
 app.use('/assign',assign)
+app.use("/teacherlogin",teacherlogin)
 
 
 // Chatbot route

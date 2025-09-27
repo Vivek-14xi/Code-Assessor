@@ -1,190 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Study Room</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'study-blue': '#1e40af',
-                        'study-light-blue': '#3b82f6',
-                        'study-lighter-blue': '#93c5fd',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "study-blue": "#1e40af",
+              "study-light-blue": "#3b82f6",
+              "study-lighter-blue": "#93c5fd",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        .fade-in { animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .slide-down { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .slide-down.open { max-height: 500px; transition: max-height 0.5s ease-in; }
-        .progress-bar { transition: width 0.5s ease-in-out; }
-        .question-button { transition: all 0.2s ease-in-out; }
-        .question-button:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-down {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .slide-down.open {
+        max-height: 500px;
+        transition: max-height 0.5s ease-in;
+      }
+      .progress-bar {
+        transition: width 0.5s ease-in-out;
+      }
+      .question-button {
+        transition: all 0.2s ease-in-out;
+      }
+      .question-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
     </style>
-</head>
-<body class="bg-white text-gray-800">
+  </head>
+  <body class="bg-white text-gray-800">
     <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 fade-in">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-2xl font-bold text-study-blue">Student Study Room</div>
-            <div class="relative">
-                <div class="flex items-center space-x-2 cursor-pointer" id="profile-dropdown-trigger">
-                    <div class="w-10 h-10 rounded-full bg-study-blue flex items-center justify-center text-white font-bold border-2 border-white shadow">JS</div>
-                    <span class="text-study-blue font-medium"> Student</span>
-                </div>
-                <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50" id="profile-dropdown">
-                    <a href="#" class="block px-4 py-2 text-study-blue hover:bg-blue-50">Your Profile</a>
-                    <a href="#" onclick="logout()" class="block px-4 py-2 text-study-blue hover:bg-blue-50">Logout</a>
-                </div>
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="text-2xl font-bold text-study-blue">Student Study Room</div>
+        <div class="relative">
+          <div
+            class="flex items-center space-x-2 cursor-pointer"
+            id="profile-dropdown-trigger"
+          >
+            <div
+              class="w-10 h-10 rounded-full bg-study-blue flex items-center justify-center text-white font-bold border-2 border-white shadow"
+            >
+              JS
             </div>
+            <span class="text-study-blue font-medium"> Student</span>
+          </div>
+          <div
+            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50"
+            id="profile-dropdown"
+          >
+            <a href="#" class="block px-4 py-2 text-study-blue hover:bg-blue-50"
+              >Your Profile</a
+            >
+            <a
+              href="#"
+              onclick="logout()"
+              class="block px-4 py-2 text-study-blue hover:bg-blue-50"
+              >Logout</a
+            >
+          </div>
         </div>
+      </div>
     </nav>
 
     <main class="pt-20 pb-10 container mx-auto px-4 fade-in">
-        <section class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-study-blue">Welcome Student</h1>
-            <p class="text-lg text-gray-600 mt-2">Let's Complete some Python Practicals</p>
+      <section class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-study-blue">Welcome Student</h1>
+        <p class="text-lg text-gray-600 mt-2">
+          Let's Complete some Python Practicals
+        </p>
+      </section>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <section class="lg:w-7/12">
+          <h2 class="text-2xl font-bold text-study-blue mb-6">Your Subjects</h2>
+          <div class="grid grid-cols-1 gap-6">
+            <!-- Python Box -->
+            <div
+              class="bg-gradient-to-r from-study-blue to-study-light-blue rounded-lg shadow-md overflow-hidden"
+            >
+              <div
+                class="p-6 text-white text-center cursor-pointer"
+                onclick="toggleSubjectDropdown('python')"
+              >
+                <h3 class="text-2xl font-bold">Python</h3>
+                <div class="flex justify-between items-center mt-4">
+                  <div class="flex space-x-2">
+                    <span
+                      class="bg-white text-study-blue text-xs font-bold px-2 py-1 rounded-full"
+                      id="python-total"
+                      >Total: 8</span
+                    >
+                    <span
+                      class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full"
+                      id="python-completed"
+                      >Completed: 6</span
+                    >
+                  </div>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    id="python-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="slide-down bg-blue-50"
+                id="python-dropdown"
+                style="overflow: auto"
+              >
+                <div class="p-4 border-t border-study-blue">
+                  <ul class="space-y-2" id="python-questions-list"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <div class="flex flex-col lg:flex-row gap-8">
-            <section class="lg:w-7/12">
-                <h2 class="text-2xl font-bold text-study-blue mb-6">Your Subjects</h2>
-                <div class="grid grid-cols-1 gap-6">
-                    <!-- Python Box -->
-                    <div class="bg-gradient-to-r from-study-blue to-study-light-blue rounded-lg shadow-md overflow-hidden">
-                        <div class="p-6 text-white text-center cursor-pointer" onclick="toggleSubjectDropdown('python')">
-                            <h3 class="text-2xl font-bold">Python</h3>
-                            <div class="flex justify-between items-center mt-4">
-                                <div class="flex space-x-2">
-                                    <span class="bg-white text-study-blue text-xs font-bold px-2 py-1 rounded-full" id="python-total">Total: 8</span>
-                                    <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full" id="python-completed">Completed: 6</span>
-                                </div>
-                                <svg class="w-5 h-5 transform transition-transform" id="python-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="slide-down bg-blue-50" id="python-dropdown" style="overflow: auto;">
-                            <div class="p-4 border-t border-study-blue">
-                                <ul class="space-y-2" id="python-questions-list"></ul>
-                            </div>
-                        </div>
-                    </div>
+        <section class="lg:w-5/12 bg-blue-50 rounded-lg shadow-md p-6 h-fit">
+          <h2 class="text-2xl font-bold text-study-blue text-center mb-6">
+            Your Analytics
+          </h2>
+          <div>
+            <h3 class="text-lg font-semibold text-study-blue mb-2">
+              Subject Progress
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm font-medium text-study-blue"
+                    >Python</span
+                  >
+                  <span
+                    class="text-sm font-medium text-study-blue"
+                    id="python-progress-text"
+                    >6/8</span
+                  >
                 </div>
-            </section>
-
-            <section class="lg:w-5/12 bg-blue-50 rounded-lg shadow-md p-6 h-fit">
-                <h2 class="text-2xl font-bold text-study-blue text-center mb-6">Your Analytics</h2>
-                <div>
-                    <h3 class="text-lg font-semibold text-study-blue mb-2">Subject Progress</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-study-blue">Python</span>
-                                <span class="text-sm font-medium text-study-blue" id="python-progress-text">6/8</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-study-blue h-2.5 rounded-full progress-bar" id="python-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div
+                    class="bg-study-blue h-2.5 rounded-full progress-bar"
+                    id="python-progress"
+                    style="width: 75%"
+                  ></div>
                 </div>
-            </section>
-        </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <script>
-        const pythonQuestions = [
-            "Write a program to implement stack",
-            "Write a program to implement linked list",
-            "Write a program to implement iterative binary search",
-            "Write a program to implement binary tree",
-            "Write a program to show tree traversal",
-            "Write a program to implement queue",
-            "Write a program for bubble sort",
-            "Write a program for quick sort"
-        ];
+      const pythonQuestions = [
+        "Write a program to implement stack",
+        "Write a program to implement linked list",
+        "Write a program to implement iterative binary search",
+        "Write a program to implement binary tree",
+        "Write a program to show tree traversal",
+        "Write a program to implement queue",
+        "Write a program for bubble sort",
+        "Write a program for quick sort",
+      ];
 
-        document.addEventListener('DOMContentLoaded', function() {
-            addQuestions('python', pythonQuestions);
-            setupProfileDropdown();
-        })
+      document.addEventListener("DOMContentLoaded", function () {
+        addQuestions("python", pythonQuestions);
+        setupProfileDropdown();
+      });
 
-        function setupProfileDropdown() {
-            const dropdownTrigger = document.getElementById('profile-dropdown-trigger');
-            const dropdown = document.getElementById('profile-dropdown');
-            dropdownTrigger.addEventListener('click', () => dropdown.classList.toggle('hidden'));
-            document.addEventListener('click', event => {
-                if (!dropdownTrigger.contains(event.target) && !dropdown.contains(event.target)) {
-                    dropdown.classList.add('hidden');
-                }
-            });
+      function setupProfileDropdown() {
+        const dropdownTrigger = document.getElementById(
+          "profile-dropdown-trigger"
+        );
+        const dropdown = document.getElementById("profile-dropdown");
+        dropdownTrigger.addEventListener("click", () =>
+          dropdown.classList.toggle("hidden")
+        );
+        document.addEventListener("click", (event) => {
+          if (
+            !dropdownTrigger.contains(event.target) &&
+            !dropdown.contains(event.target)
+          ) {
+            dropdown.classList.add("hidden");
+          }
+        });
+      }
+
+      function logout() {
+        alert("Logout functionality would be implemented here");
+      }
+
+      function toggleSubjectDropdown(subject) {
+        const dropdown = document.getElementById(`${subject}-dropdown`);
+        const arrow = document.getElementById(`${subject}-arrow`);
+        const isOpen = dropdown.classList.contains("open");
+        dropdown.classList.toggle("open", !isOpen);
+        arrow.classList.toggle("rotate-180", !isOpen);
+      }
+
+      // ...existing code...
+      function addQuestions(subject, questionsArray) {
+        const questionsList = document.getElementById(
+          `${subject}-questions-list`
+        );
+        questionsList.innerHTML = "";
+        questionsArray.forEach((question, index) => {
+          const li = document.createElement("li");
+          li.className =
+            "flex items-center justify-between p-2 bg-white rounded-md shadow-sm";
+          const questionText = document.createElement("span");
+          questionText.className = "text-study-blue";
+          questionText.textContent = question;
+          // Anchor tag instead of button
+          const anchor = document.createElement("a");
+          anchor.href = "/editor";
+          anchor.id = `${subject}-question-${index}`;
+          anchor.className = `question-button px-3 py-1 rounded-md text-white font-medium ${
+            index < 6
+              ? "bg-green-500 hover:bg-green-600"
+              : "bg-study-blue hover:bg-blue-700"
+          }`;
+          anchor.textContent = index < 6 ? "Completed" : "Start";
+          anchor.addEventListener("click", (e) =>
+            navigateToQuestionPage(subject, index, question)
+          );
+          li.appendChild(questionText);
+          li.appendChild(anchor);
+          questionsList.appendChild(li);
+        });
+        updateProgress(subject);
+      }
+      // ...existing code...
+
+      function navigateToQuestionPage(subject, questionIndex, questionText) {
+        alert(
+          `Navigating to ${subject} question ${
+            questionIndex + 1
+          }: ${questionText}`
+        );
+        const button = document.getElementById(
+          `${subject}-question-${questionIndex}`
+        );
+        if (button) {
+          button.textContent = "Completed";
+          button.classList.remove("bg-study-blue", "hover:bg-blue-700");
+          button.classList.add("bg-green-500", "hover:bg-green-600");
+          updateProgress(subject);
         }
+      }
 
-        function logout() { alert('Logout functionality would be implemented here'); }
-
-        function toggleSubjectDropdown(subject) {
-            const dropdown = document.getElementById(`${subject}-dropdown`);
-            const arrow = document.getElementById(`${subject}-arrow`);
-            const isOpen = dropdown.classList.contains('open');
-            dropdown.classList.toggle('open', !isOpen);
-            arrow.classList.toggle('rotate-180', !isOpen);
-        }
-
-        function addQuestions(subject, questionsArray) {
-            const questionsList = document.getElementById(`${subject}-questions-list`);
-            questionsList.innerHTML = '';
-            questionsArray.forEach((question, index) => {
-                const li = document.createElement('li');
-                li.className = 'flex items-center justify-between p-2 bg-white rounded-md shadow-sm';
-                const questionText = document.createElement('span');
-                questionText.className = 'text-study-blue';
-                questionText.textContent = question;
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.id = `${subject}-question-${index}`;
-                button.className = `question-button px-3 py-1 rounded-md text-white font-medium ${index < 6 ? 'bg-green-500 hover:bg-green-600' : 'bg-study-blue hover:bg-blue-700'}`;
-                button.textContent = index < 6 ? 'Completed' : 'Start';
-                button.addEventListener('click', () => navigateToQuestionPage(subject, index, question));
-                li.appendChild(questionText);
-                li.appendChild(button);
-                questionsList.appendChild(li);
-            });
-            updateProgress(subject);
-        }
-
-        function navigateToQuestionPage(subject, questionIndex, questionText) {
-            alert(`Navigating to ${subject} question ${questionIndex + 1}: ${questionText}`);
-            const button = document.getElementById(`${subject}-question-${questionIndex}`);
-            if (button) {
-                button.textContent = 'Completed';
-                button.classList.remove('bg-study-blue', 'hover:bg-blue-700');
-                button.classList.add('bg-green-500', 'hover:bg-green-600');
-                updateProgress(subject);
-            }
-        }
-
-        function updateProgress(subject) {
-            const buttons = document.querySelectorAll(`#${subject}-questions-list button`);
-            let completed = 0;
-            buttons.forEach(button => { if (button.textContent === 'Completed') completed++; });
-            const total = buttons.length;
-            const progressPercentage = (completed / total) * 100;
-            const progressBar = document.getElementById(`${subject}-progress`);
-            if (progressBar) progressBar.style.width = `${progressPercentage}%`;
-            const progressText = document.getElementById(`${subject}-progress-text`);
-            if (progressText) progressText.textContent = `${completed}/${total}`;
-            const totalBadge = document.getElementById(`${subject}-total`);
-            const completedBadge = document.getElementById(`${subject}-completed`);
-            if (totalBadge) totalBadge.textContent = `Total: ${total}`;
-            if (completedBadge) completedBadge.textContent = `Completed: ${completed}`;
-        }
+      function updateProgress(subject) {
+        const buttons = document.querySelectorAll(
+          `#${subject}-questions-list button`
+        );
+        let completed = 0;
+        buttons.forEach((button) => {
+          if (button.textContent === "Completed") completed++;
+        });
+        const total = buttons.length;
+        const progressPercentage = (completed / total) * 100;
+        const progressBar = document.getElementById(`${subject}-progress`);
+        if (progressBar) progressBar.style.width = `${progressPercentage}%`;
+        const progressText = document.getElementById(
+          `${subject}-progress-text`
+        );
+        if (progressText) progressText.textContent = `${completed}/${total}`;
+        const totalBadge = document.getElementById(`${subject}-total`);
+        const completedBadge = document.getElementById(`${subject}-completed`);
+        if (totalBadge) totalBadge.textContent = `Total: ${total}`;
+        if (completedBadge)
+          completedBadge.textContent = `Completed: ${completed}`;
+      }
     </script>
-</body>
+  </body>
 </html>

@@ -42,34 +42,6 @@
       <!-- Left: Python Editor -->
       <div class="flex-1 p-4 flex flex-col">
         <textarea id="code">
-
-def factorial(n):
-    if n==0 or n==1:
-        return 1
-    return n*factorial(n-1)
-
-def fibonacci(n):
-    seq=[0,1]
-    for i in range(2,n):
-        seq.append(seq[-1]+seq[-2])
-    return seq
-
-def prime_numbers(limit):
-    primes=[]
-    for num in range(2,limit+1):
-        is_prime=True
-        for i in range(2,int(num**0.5)+1):
-            if num%i==0:
-                is_prime=False
-                break
-        if is_prime:
-            primes.append(num)
-    return primes
-
-print("=== Python Demo Program ===")
-print("Factorial of 6:", factorial(6))
-print("First 10 Fibonacci numbers:", fibonacci(10))
-print("Prime numbers up to 50:", prime_numbers(50))
       </textarea
         >
 

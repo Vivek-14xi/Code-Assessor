@@ -107,21 +107,13 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
           <div
             class="chat-container flex-1 p-6 overflow-y-auto space-y-4 no-scrollbar ;"
           >
-            <div class="flex justify-start">
-              
-            </div>
+            <div class="flex justify-start"></div>
 
-            <div class="flex justify-end">
-              
-            </div>
+            <div class="flex justify-end"></div>
 
-            <div class="flex justify-start">
-        
-            </div>
+            <div class="flex justify-start"></div>
 
-            <div class="flex justify-end">
-              
-            </div>
+            <div class="flex justify-end"></div>
           </div>
 
           <div
@@ -190,7 +182,13 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
         indentUnit: 4,
         tabSize: 4,
       });
-
+      // Disable copy-paste in CodeMirror editor
+      editor.on("paste", function (cm, event) {
+        event.preventDefault();
+      });
+      editor.getWrapperElement().addEventListener("copy", function (e) {
+        e.preventDefault();
+      });
       async function runCode() {
         const code = editor.getValue();
 

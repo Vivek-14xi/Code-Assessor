@@ -12,7 +12,7 @@ export const handleChat = async (req, res) => {
       config: {
         systemInstruction: "Provide response in markdown format with proper headings, lists, bold, and line breaks.",
       },
-    });
+    }); 
  
     res.json({ answer: response.text });
   } catch (error) {

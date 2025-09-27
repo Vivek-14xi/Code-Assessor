@@ -5,6 +5,9 @@ import editor from './routes/editor.js';
 import teacher from "./routes/teacher-dashboard.js"
 import student from "./routes/student-dahboard.js"
 import feature from "./routes/feature.js"
+import mocktest from "./routes/mocktest.js"
+import login from "./routes/login.js"
+
 
 const app = express();
 const PORT = 6500;
@@ -21,6 +24,8 @@ app.use('/editor', editor);
 app.use('/teacher',teacher);
 app.use('/student',student);
 app.use('/feature',feature);
+app.use('/mock',mocktest);
+app.use('/login', login);
 
 
 // Chatbot route

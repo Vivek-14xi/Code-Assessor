@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Practical</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans opacity-0 transition-opacity duration-500" onload="document.body.classList.add('opacity-100')">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-200 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center">
+            <span class="text-blue-600 text-2xl cursor-pointer">&lt;</span>
+            <div class="flex-1 text-center text-blue-800 font-bold text-xl">Assign Practical</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-4">
+        <div class="flex justify-between mb-4">
+            <h2 class="text-blue-800 font-bold text-lg">Data Structure</h2>
+            <span class="text-blue-600">5th Sem Section : C</span>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4">
+            <!-- Tags Sidebar -->
+            <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-32">
+                <div >5th sem</div>
+                <div class="bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-center">Python</div>
+            </div>
+            <!-- Questions List -->
+            <div class="flex-1">
+                <div id="questions-list" class="space-y-2">
+                    <div class="flex items-center gap-2" id="question-1">
+                        <div class="bg-blue-100 p-1 rounded text-center w-10 font-bold">1.</div>
+                        <div class="bg-blue-100 p-2 rounded flex-1">Write a c program to implement array</div>
+                    </div>
+                    <div class="flex items-center gap-2" id="question-2">
+                        <div class="bg-blue-100 p-1 rounded text-center w-10 font-bold">2.</div>
+                        <div class="bg-blue-100 p-2 rounded flex-1">Write a c program to insert node at last in tree</div>
+                    </div>
+                    <div class="flex items-center gap-2" id="question-3">
+                        <div class="bg-blue-100 p-1 rounded text-center w-10 font-bold">3.</div>
+                        <div class="bg-blue-100 p-2 rounded flex-1">Write a c program to implement and traverse linked list</div>
+                    </div>
+                    <div class="flex items-center gap-2" id="question-4">
+                        <div class="bg-blue-100 p-1 rounded text-center w-10 font-bold">4.</div>
+                        <div class="bg-blue-100 p-2 rounded flex-1">Write a c program to create stack</div>
+                    </div>
+                    <div class="flex items-center gap-2" id="question-5">
+                        <div class="bg-blue-100 p-1 rounded text-center w-10 font-bold">5.</div>
+                        <div class="bg-blue-100 p-2 rounded flex-1">Write a c program to create queue</div>
+                    </div>
+                </div>
+                <!-- Add Button -->
+                <div class="text-center mt-4">
+                    <button onclick="showAddInput()" class="bg-gray-200 text-gray-600 rounded-full w-8 h-8 text-xl hover:bg-blue-200 hover:text-blue-600 transition-colors duration-300">+</button>
+                </div>
+                <!-- Input Area (hidden initially) -->
+                <div id="add-input-area" class="hidden mt-2 flex items-center gap-2">
+                    <div id="new-number" class="bg-blue-100 p-1 rounded text-center w-10 font-bold">6.</div>
+                    <input id="new-question-input" type="text" class="bg-blue-100 p-2 rounded flex-1" placeholder="Enter the new question">
+                    <button onclick="addQuestion()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        function showAddInput() {
+            const addArea = document.getElementById('add-input-area');
+            addArea.classList.remove('hidden');
+            const list = document.getElementById('questions-list');
+            const count = list.children.length + 1;
+            document.getElementById('new-number').textContent = `${count}.`;
+        }
+
+        function addQuestion() {
+            const input = document.getElementById('new-question-input');
+            const question = input.value.trim();
+            if (question) {
+                const list = document.getElementById('questions-list');
+                const count = list.children.length + 1;
+                const newId = `question-${count}`;
+                const div = document.createElement('div');
+                div.className = 'flex items-center gap-2';
+                div.id = newId;
+                div.innerHTML = `
+                    <div class="bg-blue-100 p-1 rounded text-center w-10 font-bold">${count}.</div>
+                    <div class="bg-blue-100 p-2 rounded flex-1">${question}</div>
+                `;
+                list.appendChild(div);
+                input.value = '';
+                const addArea = document.getElementById('add-input-area');
+                addArea.classList.add('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>

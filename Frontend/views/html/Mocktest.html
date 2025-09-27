@@ -37,16 +37,80 @@
       </div>
     </div>
   </nav>
+  <div class="quiz-container bg-white p-10 rounded-lg shadow-lg w-full max-w-3xl">
+        <h1 class="text-3xl font-bold mb-8 text-center text-blue-600">Quiz Time! 🎉</h1>
+
+        <!-- Question 1 -->
+        <div class="mb-6">
+            <p class="font-semibold mb-1">1. How do you concatenate two strings in Python?</p>
+            <div class="space-y-2">
+                <label class="block"><input type="radio" name="q1" value="Paris" class="mr-2">str1 . str2</label>
+                <label class="block"><input type="radio" name="q1" value="London" class="mr-2">str1 + str2</label>
+                <label class="block"><input type="radio" name="q1" value="Berlin" class="mr-2">str1 , str2</label>
+                <label class="block"><input type="radio" name="q1" value="Madrid" class="mr-2">concat(str1 , str2)</label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="mb-6">
+            <p class="font-semibold mb-2">2. What is the purpose of the __dict__ attribute in Python?</p>
+            <div class="space-y-2">
+                <label class="block"><input type="radio" name="q2" value="Python" class="mr-2">To access the dictionary of a list</label>
+                <label class="block"><input type="radio" name="q2" value="JavaScript" class="mr-2">To store the attributes of an object</label>
+                <label class="block"><input type="radio" name="q2" value="C++" class="mr-2">To define a dictionary in Python</label>
+                <label class="block"><input type="radio" name="q2" value="Java" class="mr-2">JavaTo convert a dictionary to a list</label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="mb-6">
+            <p class="font-semibold mb-2">3. What does HTML stand for?</p>
+            <div class="space-y-2">
+                <label class="block"><input type="radio" name="q3" value="Hyper Trainer Marking Language" class="mr-2">Hyper Trainer Marking Language</label>
+                <label class="block"><input type="radio" name="q3" value="Hyper Text Markup Language" class="mr-2">Hyper Text Markup Language</label>
+                <label class="block"><input type="radio" name="q3" value="Hyper Text Markdown Language" class="mr-2">Hyper Text Markdown Language</label>
+                <label class="block"><input type="radio" name="q3" value="Hyper Tool Multi Language" class="mr-2">Hyper Tool Multi Language</label>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="mb-6">
+            <p class="font-semibold mb-2">4. Which CSS framework are we using here?</p>
+            <div class="space-y-2">
+                <label class="block"><input type="radio" name="q4" value="Bootstrap" class="mr-2">Bootstrap</label>
+                <label class="block"><input type="radio" name="q4" value="Tailwind CSS" class="mr-2">Tailwind CSS</label>
+                <label class="block"><input type="radio" name="q4" value="Materialize" class="mr-2">Materialize</label>
+                <label class="block"><input type="radio" name="q4" value="Foundation" class="mr-2">Foundation</label>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="mb-6">
+            <p class="font-semibold mb-2">5. Which tag is used to include JavaScript?</p>
+            <div class="space-y-2">
+                <label class="block"><input type="radio" name="q5" value="script" class="mr-2">&lt;script&gt;</label>
+                <label class="block"><input type="radio" name="q5" value="javascript" class="mr-2">&lt;javascript&gt;</label>
+                <label class="block"><input type="radio" name="q5" value="js" class="mr-2">&lt;js&gt;</label>
+                <label class="block"><input type="radio" name="q5" value="scripting" class="mr-2">&lt;scripting&gt;</label>
+            </div>
+        </div>
+
+        <button id="submitBtn" class="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition mb-6">Submit Answers</button>
+
+        <div id="result" class="text-center font-semibold text-xl"></div>
+    </div>
+
 
   <script>
+    const 1 = document.getElementsByClassName
     function toggleDropdown() {
       document.getElementById("dropdownMenu").classList.toggle("hidden");
     }
   </script>
    <script>
         const correctAnswers = {
-            q1: "Paris",
-            q2: "JavaScript",
+            q1: "str1 + str2",
+            q2: "To store the atributes of an object",
             q3: "Hyper Text Markup Language",
             q4: "Tailwind CSS",
             q5: "script"

@@ -100,7 +100,7 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
             <h2
               class="text-lg font-semibold text-gray-800 flex-1 text-center pr-10"
             >
-              ChatBot
+              Study Buddy
             </h2>
           </div>
 
@@ -127,38 +127,6 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
             />
 
             <div class="flex space-x-2">
-              <button class="p-2 text-gray-500 hover:text-blue-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 13h6m-3-3v6m-9-3a9 9 0 1118 0 9 9 0 01-18 0z"
-                  />
-                </svg>
-              </button>
-              <button class="p-2 text-gray-500 hover:text-blue-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-4.586-4.586a2 2 0 00-2.828 0L6 14m-2 2v2a2 2 0 002 2h12a2 2 0 002-2v-2m-2-2h-2m-2-2h-2m-2-2h-2"
-                  />
-                </svg>
-              </button>
               <button
                 class="p-2 text-gray-500 hover:text-blue-500"
                 onclick="send()"
@@ -182,13 +150,16 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
         indentUnit: 4,
         tabSize: 4,
       });
-      // Disable copy-paste in CodeMirror editor
-      editor.on("paste", function (cm, event) {
-        event.preventDefault();
-      });
-      editor.getWrapperElement().addEventListener("copy", function (e) {
-        e.preventDefault();
-      });
+      // // Disable copy-paste in CodeMirror editor
+      // editor.on("paste", function (cm, event) {
+      //   event.preventDefault();
+      // });
+      // editor.getWrapperElement().addEventListener("copy", function (e) {
+      //   e.preventDefault();
+      // });
+
+      let outputString = ""; // ye global variable me output store hoga
+
       async function runCode() {
         const code = editor.getValue();
 
@@ -203,10 +174,29 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
         });
 
         const data = await response.json();
-        document.getElementById("output").innerText =
-          (data.run.output || "") + (data.run.stderr || "");
+
+        // ✅ poora output ek multiline string me store kar lo
+        outputString = (data.run.output || "") + (data.run.stderr || "");
+        console.log(outputString);
+
+        // ✅ same string ko output box me dikhana
+        document.getElementById("output").innerText = outputString;
+
+        console.log("Output string:", outputString); // console me bhi check kar sakte ho
+      }
+      let liveString = ``;
+
+      // ye function editor se string track karega
+      function trackCode(editor) {
+        editor.on("change", function (cm, change) {
+          // poora editor ka content string me le lo
+          liveString = cm.getValue();
+          console.log("Current string:", liveString);
+        });
       }
 
+      // 👇 CodeMirror initialize ke baad call karo
+      trackCode(editor);
       function clearOutput() {
         document.getElementById("output").innerText = "";
       }
@@ -248,17 +238,19 @@ https://cdn.jsdelivr.net/npm/postcss@8.5.6/lib/postcss.min.js
     </div>
 
   `;
-    
 
         chatContainer.appendChild(aiBubble);
         chatContainer.scrollTop = chatContainer.scrollHeight;
 
-  
         try {
           const res = await fetch("/editor/ask", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question: userQueryInput }),
+            body: JSON.stringify({
+              question: "Explain my code output",
+              code: liveString, // code string
+              output: outputString, // output string
+            }),
           });
 
           const data = await res.json();
